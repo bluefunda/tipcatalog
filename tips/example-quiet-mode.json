@@ -1,0 +1,58 @@
+{
+  "id": "example-quiet-mode",
+  "family": "cli-basics",
+  "surfaces": [
+    "cli"
+  ],
+  "domain_scope": [
+    "general"
+  ],
+  "persona_gate": "",
+  "trigger_conditions": [
+    "command_exit_code_nonzero"
+  ],
+  "min_tier": "free",
+  "cooldown": "24h",
+  "render": {
+    "cli": {
+      "title": "Tip",
+      "body": "Pipe-friendly output: pass -o quiet for one value per line, no headers."
+    }
+  },
+  "deep_link": "",
+  "embedding": [
+    0.0,
+    0.0722,
+    0.1443,
+    0.2165,
+    0.2887,
+    0.3608,
+    0.433,
+    0.5052,
+    0.5773,
+    0.6495,
+    0.7216,
+    0.7938,
+    0.866,
+    0.9381,
+    0.0103,
+    0.0825,
+    0.1546,
+    0.2268,
+    0.299,
+    0.3711,
+    0.4433,
+    0.5155,
+    0.5876,
+    0.6598,
+    0.732,
+    0.8041,
+    0.8763,
+    0.9485,
+    0.0206,
+    0.0928,
+    0.1649,
+    0.2371
+  ],
+  "catalog_version": "1"
+}
