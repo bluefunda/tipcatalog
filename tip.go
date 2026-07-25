@@ -1,6 +1,3 @@
-// Package tipcatalog defines the shared tip/suggestion content schema
-// consumed by the bluefunda CLI, iOS app, and editor plugins, plus the
-// loading, validation, and signing helpers around it.
 package tipcatalog
 
 // Known surface identifiers. A Tip's Surfaces field gates which clients may

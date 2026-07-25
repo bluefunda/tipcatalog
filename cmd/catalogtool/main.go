@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"os"
 
-	tipcatalog "github.com/bluefunda/tip-catalog"
+	tipcatalog "github.com/bluefunda/tipcatalog"
 )
 
 func main() {

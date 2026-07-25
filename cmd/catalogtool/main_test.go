@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	tipcatalog "github.com/bluefunda/tip-catalog"
+	tipcatalog "github.com/bluefunda/tipcatalog"
 )
 
 func TestRun_CompilesAndSigns(t *testing.T) {

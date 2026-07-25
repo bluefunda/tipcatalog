@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/bluefunda/tip-catalog/schema/tip.schema.json",
+  "$id": "https://github.com/bluefunda/tipcatalog/schema/tip.schema.json",
   "title": "Tip",
   "description": "One entry in the shared bluefunda tip/suggestion catalog. Mirrors tip.go — keep both in sync (schema_test.go checks the required list).",
   "type": "object",

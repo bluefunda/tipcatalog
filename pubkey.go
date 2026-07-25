@@ -6,7 +6,7 @@ import (
 )
 
 // publicKeyB64 is the Ed25519 public key used to verify a fetched manifest's
-// signature. Its matching private key is held only in the tip-catalog repo's
+// signature. Its matching private key is held only in the tipcatalog repo's
 // TIP_CATALOG_SIGNING_KEY secret and used by the publish-manifest workflow —
 // it never appears in source control.
 const publicKeyB64 = "M1U752fzmcXdY+7L+NlNdsHBvVE4o/S41CuDiHPfyBA="
