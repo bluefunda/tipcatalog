@@ -1,15 +1,15 @@
-# Contributing to tip-catalog
+# Contributing to tipcatalog
 
 ## Prerequisites
 
-- Go 1.25+
+- Go 1.26+
 - `golangci-lint` ([install guide](https://golangci-lint.run/welcome/install/))
 
 ## Getting started
 
 ```bash
-git clone https://github.com/bluefunda/tip-catalog
-cd tip-catalog
+git clone https://github.com/bluefunda/tipcatalog
+cd tipcatalog
 go build ./...
 go test -race ./...
 ```
@@ -26,7 +26,7 @@ go test -race ./...
    golangci-lint run
    ```
 4. Commit using [Conventional Commits](https://www.conventionalcommits.org/): `fix:`, `feat:`, `chore:`, etc.
-5. Open a pull request against `main`
+5. Open a pull request against `main` — the PR title must also follow conventional commit format (enforced by CI)
 
 ## Adding or editing a tip
 

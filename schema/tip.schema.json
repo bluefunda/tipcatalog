@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/bluefunda/tipcatalog/schema/tip.schema.json",
+  "title": "Tip",
+  "description": "One entry in the shared bluefunda tip/suggestion catalog. Mirrors tip.go — keep both in sync (schema_test.go checks the required list).",
+  "type": "object",
+  "required": ["id", "family", "surfaces", "render", "embedding", "catalog_version"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique tip identifier, stable across catalog versions."
+    },
+    "family": {
+      "type": "string",
+      "description": "Groups related tips for anti-annoyance suppression (dismissing one suppresses the family)."
+    },
+    "surfaces": {
+      "type": "array",
+      "items": { "enum": ["cli", "ios", "vscode", "adt"] },
+      "minItems": 1,
+      "description": "Which clients may show this tip. Each value must have a matching key under render."
+    },
+    "domain_scope": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Optional topical scope used to filter candidate tips (e.g. ABAP domain areas)."
+    },
+    "persona_gate": {
+      "type": "string",
+      "description": "Optional persona this tip is restricted to (e.g. \"new_user\"). Empty means no gate."
+    },
+    "trigger_conditions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Signal conditions that make this tip eligible (e.g. \"command_exit_code_nonzero\")."
+    },
+    "min_tier": {
+      "type": "string",
+      "description": "Minimum account tier required to see this tip."
+    },
+    "cooldown": {
+      "type": "string",
+      "description": "Minimum time before this tip (or its family) can be shown again, as a Go duration string (e.g. \"24h\")."
+    },
+    "render": {
+      "type": "object",
+      "description": "Per-surface copy. Must have an entry for every surface listed in surfaces.",
+      "properties": {
+        "cli": { "$ref": "#/$defs/renderContent" },
+        "ios": { "$ref": "#/$defs/renderContent" },
+        "vscode": { "$ref": "#/$defs/renderContent" },
+        "adt": { "$ref": "#/$defs/renderContent" }
+      },
+      "additionalProperties": false
+    },
+    "deep_link": {
+      "type": "string",
+      "description": "Optional URI a client can open in response to engagement (e.g. a docs page or in-app screen)."
+    },
+    "embedding": {
+      "type": "array",
+      "items": { "type": "number" },
+      "description": "Fixed-length content embedding used for cosine-similarity candidate selection. Length must equal EmbeddingDim (see validate.go)."
+    },
+    "catalog_version": {
+      "type": "string",
+      "description": "Schema/content version this tip was authored against."
+    }
+  },
+  "$defs": {
+    "renderContent": {
+      "type": "object",
+      "required": ["title", "body"],
+      "properties": {
+        "title": { "type": "string" },
+        "body": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

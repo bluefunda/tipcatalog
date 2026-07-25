@@ -1,8 +1,9 @@
-# tip-catalog
+# tipcatalog
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/bluefunda/tip-catalog.svg)](https://pkg.go.dev/github.com/bluefunda/tip-catalog)
-[![CI](https://github.com/bluefunda/tip-catalog/actions/workflows/ci.yml/badge.svg)](https://github.com/bluefunda/tip-catalog/actions/workflows/ci.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/bluefunda/tipcatalog.svg)](https://pkg.go.dev/github.com/bluefunda/tipcatalog)
+[![CI](https://github.com/bluefunda/tipcatalog/actions/workflows/ci.yml/badge.svg)](https://github.com/bluefunda/tipcatalog/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/bluefunda/tipcatalog)](https://goreportcard.com/report/github.com/bluefunda/tipcatalog)
 
 Shared tip/suggestion content catalog for the bluefunda CLI (`bai`), the cai-iOS app, and editor
 plugins. One schema, one set of tip content, rendered differently per surface.
@@ -10,20 +11,20 @@ plugins. One schema, one set of tip content, rendered differently per surface.
 ## Why
 
 Each client (CLI, iOS, editor) needs contextual tips, but authoring and maintaining separate copy
-per surface drifts fast. `tip-catalog` is the single source of truth: a `Tip` schema with
+per surface drifts fast. `tipcatalog` is the single source of truth: a `Tip` schema with
 per-surface render copy, a validator, and a signed, versioned distribution format so clients can
 fetch updates without redeploying.
 
 ## Installation
 
 ```bash
-go get github.com/bluefunda/tip-catalog
+go get github.com/bluefunda/tipcatalog
 ```
 
 ## Usage
 
 ```go
-import tipcatalog "github.com/bluefunda/tip-catalog"
+import tipcatalog "github.com/bluefunda/tipcatalog"
 
 // Offline fallback baked into the binary via go:embed.
 tips, err := tipcatalog.Embedded()

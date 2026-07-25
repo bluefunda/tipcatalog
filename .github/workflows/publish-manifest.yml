@@ -1,0 +1,31 @@
+name: Publish manifest
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Compile and sign catalog
+        env:
+          TIP_CATALOG_SIGNING_KEY: ${{ secrets.TIP_CATALOG_SIGNING_KEY }}
+        run: |
+          go run ./cmd/catalogtool -tips tips -out catalog.json -sig-out catalog.json.sig
+
+      - name: Upload release assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" catalog.json catalog.json.sig --clobber

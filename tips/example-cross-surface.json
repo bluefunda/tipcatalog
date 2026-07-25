@@ -1,0 +1,63 @@
+{
+  "id": "example-cross-surface",
+  "family": "onboarding",
+  "surfaces": [
+    "cli",
+    "ios"
+  ],
+  "domain_scope": [
+    "general"
+  ],
+  "persona_gate": "new_user",
+  "trigger_conditions": [
+    "first_run"
+  ],
+  "min_tier": "free",
+  "cooldown": "72h",
+  "render": {
+    "cli": {
+      "title": "Tip",
+      "body": "Run bai --help to see every available command."
+    },
+    "ios": {
+      "title": "Getting started",
+      "body": "Tap the command palette to see everything you can do from your phone."
+    }
+  },
+  "deep_link": "bluefunda://help",
+  "embedding": [
+    0.0,
+    0.134,
+    0.268,
+    0.4021,
+    0.5361,
+    0.6701,
+    0.8041,
+    0.9381,
+    0.0722,
+    0.2062,
+    0.3402,
+    0.4742,
+    0.6082,
+    0.7423,
+    0.8763,
+    0.0103,
+    0.1443,
+    0.2784,
+    0.4124,
+    0.5464,
+    0.6804,
+    0.8144,
+    0.9485,
+    0.0825,
+    0.2165,
+    0.3505,
+    0.4845,
+    0.6186,
+    0.7526,
+    0.8866,
+    0.0206,
+    0.1546
+  ],
+  "catalog_version": "1"
+}
