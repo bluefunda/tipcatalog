@@ -5,15 +5,10 @@ import (
 	"fmt"
 )
 
-// EmbeddingDim is the required length of every Tip's Embedding vector.
-// Placeholder pending a real embedding model choice for tip content —
-// change this and re-embed all tips together, since mixed dimensions would
-// make cosine similarity meaningless across the catalog.
-const EmbeddingDim = 32
-
 // Validate checks every tip in tips for required fields, valid surfaces,
-// matching per-surface render copy, correct embedding dimensionality, and
-// duplicate IDs across the set. It returns the first error found.
+// matching per-surface render copy, correct embedding dimensionality,
+// recognized domain_scope topics, and duplicate IDs across the set. It
+// returns the first error found.
 func Validate(tips []Tip) error {
 	seen := make(map[string]bool, len(tips))
 	for _, t := range tips {
@@ -43,6 +38,11 @@ func validateOne(t Tip) error {
 	}
 	if len(t.Embedding) != EmbeddingDim {
 		return fmt.Errorf("embedding must have %d dimensions, got %d", EmbeddingDim, len(t.Embedding))
+	}
+	for _, d := range t.DomainScope {
+		if topicIndex(d) < 0 {
+			return fmt.Errorf("unknown domain_scope topic %q (see Topics in topics.go)", d)
+		}
 	}
 	for _, s := range t.Surfaces {
 		if !knownSurfaces[s] {

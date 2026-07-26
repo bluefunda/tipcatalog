@@ -22,8 +22,26 @@
     },
     "domain_scope": {
       "type": "array",
-      "items": { "type": "string" },
-      "description": "Optional topical scope used to filter candidate tips (e.g. ABAP domain areas)."
+      "items": {
+        "enum": [
+          "auth",
+          "sessions",
+          "mcp",
+          "memory",
+          "plugins",
+          "worktree",
+          "cost-budget",
+          "model-selection",
+          "output-format",
+          "config",
+          "diagnostics",
+          "updates",
+          "automation",
+          "onboarding",
+          "errors"
+        ]
+      },
+      "description": "Topics this tip is tagged with, from the shared taxonomy (see Topics in topics.go). The compiled embedding is a multi-hot vector derived from this list — do not set embedding directly in source tip files."
     },
     "persona_gate": {
       "type": "string",
@@ -60,7 +78,7 @@
     "embedding": {
       "type": "array",
       "items": { "type": "number" },
-      "description": "Fixed-length content embedding used for cosine-similarity candidate selection. Length must equal EmbeddingDim (see validate.go)."
+      "description": "Derived automatically from domain_scope at load time (EmbeddingFromDomainScope in topics.go) — a multi-hot vector, one dimension per entry in Topics. Do not hand-author this in tips/*.json source files."
     },
     "catalog_version": {
       "type": "string",

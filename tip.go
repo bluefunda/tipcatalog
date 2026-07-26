@@ -19,18 +19,21 @@ var knownSurfaces = map[string]bool{
 
 // Tip is one entry in the shared catalog.
 type Tip struct {
-	ID                string    `json:"id"`
-	Family            string    `json:"family"`
-	Surfaces          []string  `json:"surfaces"`
-	DomainScope       []string  `json:"domain_scope,omitempty"`
-	PersonaGate       string    `json:"persona_gate,omitempty"`
-	TriggerConditions []string  `json:"trigger_conditions,omitempty"`
-	MinTier           string    `json:"min_tier,omitempty"`
-	Cooldown          string    `json:"cooldown,omitempty"`
-	Render            Render    `json:"render"`
-	DeepLink          string    `json:"deep_link,omitempty"`
-	Embedding         []float64 `json:"embedding"`
-	CatalogVersion    string    `json:"catalog_version"`
+	ID                string   `json:"id"`
+	Family            string   `json:"family"`
+	Surfaces          []string `json:"surfaces"`
+	DomainScope       []string `json:"domain_scope,omitempty"`
+	PersonaGate       string   `json:"persona_gate,omitempty"`
+	TriggerConditions []string `json:"trigger_conditions,omitempty"`
+	MinTier           string   `json:"min_tier,omitempty"`
+	Cooldown          string   `json:"cooldown,omitempty"`
+	Render            Render   `json:"render"`
+	DeepLink          string   `json:"deep_link,omitempty"`
+	// Embedding is derived automatically from DomainScope by the loader
+	// (see EmbeddingFromDomainScope in topics.go) — don't hand-author this
+	// in tips/*.json source files; any value present there is overwritten.
+	Embedding      []float64 `json:"embedding"`
+	CatalogVersion string    `json:"catalog_version"`
 }
 
 // Render holds per-surface copy for a Tip. A field is set only when the
