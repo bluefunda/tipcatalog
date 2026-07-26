@@ -40,7 +40,8 @@ ok := tipcatalog.Verify(manifestBytes, sig, tipcatalog.PublicKey)
 
 Each tip is one JSON file under `tips/`, validated against the fields documented in
 [`schema/tip.schema.json`](schema/tip.schema.json) (used by the Swift side to codegen matching
-types). See [`tip.go`](tip.go) for the canonical Go definition.
+types). See [`tip.go`](tip.go) for the canonical Go definition. To add or edit tip content, see
+[CONTENT_GUIDE.md](CONTENT_GUIDE.md).
 
 ## Distribution
 

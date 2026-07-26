@@ -26,8 +26,9 @@ All five must pass before any change is considered complete.
 | File | Purpose |
 |------|---------|
 | `tip.go` | `Tip` struct — the schema, per Phase 0 of the Contextual Tip Engine spec |
-| `validate.go` | `Validate([]Tip) error` — required fields, per-surface render keys, embedding dimensionality, duplicate IDs |
-| `load.go` | `LoadDir(dir) ([]Tip, error)`, `Compile([]Tip) ([]byte, error)` |
+| `topics.go` | `Topics` (the shared taxonomy), `EmbeddingFromDomainScope` — derives embeddings from `domain_scope`, no hand-authored floats |
+| `validate.go` | `Validate([]Tip) error` — required fields, per-surface render keys, embedding dimensionality, recognized `domain_scope` topics, duplicate IDs |
+| `load.go` | `LoadDir(dir) ([]Tip, error)`, `Compile([]Tip) ([]byte, error)` — derives each tip's embedding on load |
 | `embed.go` | `//go:embed tips/*.json` + `Embedded() ([]Tip, error)` — offline fallback for consumers |
 | `sign.go` | `Sign`/`Verify` — Ed25519 signing of the compiled catalog, stdlib only |
 | `pubkey.go` | Checked-in Ed25519 public key used to verify a fetched manifest |
@@ -59,8 +60,8 @@ publish step needed beyond that.
 
 ## Adding or editing a tip
 
-1. Add/edit a JSON file under `tips/`
-2. Run `go test ./...` — validates required fields, per-surface render copy, embedding
-   dimensionality (`EmbeddingDim` in `validate.go`), and duplicate IDs
-3. If the `Tip` struct's shape changes, update `schema/tip.schema.json` to match —
-   `schema_test.go` checks the schema's `required` list stays in sync with the Go validator
+See [CONTENT_GUIDE.md](CONTENT_GUIDE.md) for the full content-authoring walkthrough. Tips are
+tagged with `domain_scope` topics from `Topics` (`topics.go`) — never hand-author `embedding`,
+it's derived automatically at load time. If the `Tip` struct's shape changes, update
+`schema/tip.schema.json` to match — `schema_test.go` checks the schema stays in sync with both
+the Go validator's required fields and `Topics`.

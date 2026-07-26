@@ -30,11 +30,9 @@ go test -race ./...
 
 ## Adding or editing a tip
 
-1. Add or edit a JSON file under `tips/` (one tip per file, filename matches the tip `id`)
-2. Run `go test ./...` — the loader validates every tip in `tips/` against required fields,
-   per-surface render copy, embedding dimensionality, and duplicate IDs
-3. If you change the `Tip` struct's shape, update `schema/tip.schema.json` to match — `schema_test.go`
-   checks the schema's `required` list stays in sync with the Go validator
+See [CONTENT_GUIDE.md](CONTENT_GUIDE.md) for the full walkthrough (topic tagging, validation,
+what happens on merge). If you change the `Tip` struct's shape itself, also update
+`schema/tip.schema.json` to match — `schema_test.go` checks the two stay in sync.
 
 ## License
 
