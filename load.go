@@ -50,6 +50,9 @@ func loadFS(fsys fs.FS, dir string) ([]Tip, error) {
 		if err := json.Unmarshal(b, &t); err != nil {
 			return nil, fmt.Errorf("parse %s: %w", path, err)
 		}
+		// Embedding is always derived from DomainScope, never hand-authored —
+		// this overwrites whatever (if anything) was in the source JSON.
+		t.Embedding = EmbeddingFromDomainScope(t.DomainScope)
 		tips = append(tips, t)
 	}
 

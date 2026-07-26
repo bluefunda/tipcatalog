@@ -39,3 +39,40 @@ func TestSchemaRequiredMatchesValidator(t *testing.T) {
 		}
 	}
 }
+
+// TestSchemaDomainScopeEnumMatchesTopics guards against
+// schema/tip.schema.json's domain_scope enum drifting from Topics
+// (topics.go). If you add/remove/rename a topic, update both.
+func TestSchemaDomainScopeEnumMatchesTopics(t *testing.T) {
+	b, err := os.ReadFile("schema/tip.schema.json")
+	if err != nil {
+		t.Fatalf("read schema: %v", err)
+	}
+
+	var doc struct {
+		Properties struct {
+			DomainScope struct {
+				Items struct {
+					Enum []string `json:"enum"`
+				} `json:"items"`
+			} `json:"domain_scope"`
+		} `json:"properties"`
+	}
+	if err := json.Unmarshal(b, &doc); err != nil {
+		t.Fatalf("parse schema: %v", err)
+	}
+
+	got := append([]string(nil), doc.Properties.DomainScope.Items.Enum...)
+	want := append([]string(nil), Topics...)
+	sort.Strings(got)
+	sort.Strings(want)
+
+	if len(got) != len(want) {
+		t.Fatalf("schema domain_scope enum = %v, want %v (Topics)", got, want)
+	}
+	for i := range got {
+		if got[i] != want[i] {
+			t.Fatalf("schema domain_scope enum = %v, want %v (Topics)", got, want)
+		}
+	}
+}

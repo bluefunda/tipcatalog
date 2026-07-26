@@ -67,6 +67,52 @@ func TestCompile_RejectsInvalidSet(t *testing.T) {
 	}
 }
 
+func TestLoadDir_DerivesEmbeddingFromDomainScope(t *testing.T) {
+	tips, err := LoadDir("tips")
+	if err != nil {
+		t.Fatalf("LoadDir: %v", err)
+	}
+	for _, tp := range tips {
+		want := EmbeddingFromDomainScope(tp.DomainScope)
+		if len(tp.Embedding) != len(want) {
+			t.Fatalf("tip %q: embedding len = %d, want %d", tp.ID, len(tp.Embedding), len(want))
+		}
+		for i := range want {
+			if tp.Embedding[i] != want[i] {
+				t.Fatalf("tip %q: embedding does not match its own domain_scope-derived value at index %d", tp.ID, i)
+			}
+		}
+	}
+}
+
+func TestLoadDir_IgnoresHandAuthoredEmbedding(t *testing.T) {
+	dir := t.TempDir()
+	tp := validTip()
+	tp.DomainScope = []string{"auth"}
+	tp.Embedding = make([]float64, EmbeddingDim) // wrong: doesn't match domain_scope
+	for i := range tp.Embedding {
+		tp.Embedding[i] = 99 // deliberately bogus, to prove it gets overwritten
+	}
+	b, err := json.Marshal(tp)
+	if err != nil {
+		t.Fatalf("marshal: %v", err)
+	}
+	if err := os.WriteFile(filepath.Join(dir, "t.json"), b, 0o644); err != nil {
+		t.Fatalf("write: %v", err)
+	}
+
+	loaded, err := LoadDir(dir)
+	if err != nil {
+		t.Fatalf("LoadDir: %v", err)
+	}
+	want := EmbeddingFromDomainScope([]string{"auth"})
+	for i := range want {
+		if loaded[0].Embedding[i] != want[i] {
+			t.Fatalf("expected hand-authored embedding to be overwritten by the domain_scope-derived value, got %v", loaded[0].Embedding)
+		}
+	}
+}
+
 func TestEmbedded_MatchesLoadDir(t *testing.T) {
 	fromDir, err := LoadDir("tips")
 	if err != nil {

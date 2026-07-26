@@ -83,3 +83,19 @@ func TestValidate_EmptyRenderContent(t *testing.T) {
 		t.Fatal("expected error for empty render title/body")
 	}
 }
+
+func TestValidate_UnknownDomainScopeTopic(t *testing.T) {
+	tp := validTip()
+	tp.DomainScope = []string{"not-a-real-topic"}
+	if err := Validate([]Tip{tp}); err == nil {
+		t.Fatal("expected error for an unrecognized domain_scope topic")
+	}
+}
+
+func TestValidate_KnownDomainScopeTopicsOK(t *testing.T) {
+	tp := validTip()
+	tp.DomainScope = []string{"auth", "errors"}
+	if err := Validate([]Tip{tp}); err != nil {
+		t.Fatalf("expected no error for recognized domain_scope topics, got %v", err)
+	}
+}
