@@ -1,0 +1,18 @@
+{
+  "id": "ios-attachments",
+  "family": "ios-attachments",
+  "surfaces": ["ios"],
+  "domain_scope": ["onboarding", "output-format"],
+  "persona_gate": "new_user",
+  "trigger_conditions": ["first_run"],
+  "min_tier": "free",
+  "cooldown": "24h",
+  "render": {
+    "ios": {
+      "title": "Attach files and photos",
+      "body": "Tap the + next to the message field to attach a photo, document, or camera capture — CAI can read and answer questions about it."
+    }
+  },
+  "deep_link": "",
+  "catalog_version": "1"
+}

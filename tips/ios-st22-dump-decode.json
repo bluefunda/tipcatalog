@@ -1,0 +1,18 @@
+{
+  "id": "ios-st22-dump-decode",
+  "family": "ios-diagnostics",
+  "surfaces": ["ios"],
+  "domain_scope": ["diagnostics", "errors"],
+  "persona_gate": "",
+  "trigger_conditions": [],
+  "min_tier": "free",
+  "cooldown": "24h",
+  "render": {
+    "ios": {
+      "title": "Decode an ABAP dump instantly",
+      "body": "Paste or screenshot an ST22 short dump into the chat — CAI recognizes it and offers to decode it into a clear explanation."
+    }
+  },
+  "deep_link": "",
+  "catalog_version": "1"
+}
