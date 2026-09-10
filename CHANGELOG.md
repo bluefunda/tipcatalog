@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/bluefunda/tipcatalog/compare/v1.1.0...v1.2.0) (2026-09-10)
+
+
+### Features
+
+* add 7 real CAI iOS tips (Assistants, thinking modes, persona, ST22 decode, usage, attachments, voice) ([#6](https://github.com/bluefunda/tipcatalog/issues/6)) ([b19869d](https://github.com/bluefunda/tipcatalog/commit/b19869d72756f6452a6690ecc9a375982e7b5516))
+
 ## [1.1.0](https://github.com/bluefunda/tipcatalog/compare/v1.0.0...v1.1.0) (2026-07-26)
 
 
