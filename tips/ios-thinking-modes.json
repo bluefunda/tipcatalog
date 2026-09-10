@@ -1,0 +1,18 @@
+{
+  "id": "ios-thinking-modes",
+  "family": "ios-model",
+  "surfaces": ["ios"],
+  "domain_scope": ["model-selection"],
+  "persona_gate": "",
+  "trigger_conditions": [],
+  "min_tier": "free",
+  "cooldown": "72h",
+  "render": {
+    "ios": {
+      "title": "Choose how the AI thinks",
+      "body": "Tap the mode picker to switch between Auto, Quick Response, and Think Deeper. Use Think Deeper for harder questions, Quick Response when you just need a fast answer."
+    }
+  },
+  "deep_link": "",
+  "catalog_version": "1"
+}

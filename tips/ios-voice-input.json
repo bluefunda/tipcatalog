@@ -1,0 +1,18 @@
+{
+  "id": "ios-voice-input",
+  "family": "ios-voice",
+  "surfaces": ["ios"],
+  "domain_scope": ["automation"],
+  "persona_gate": "",
+  "trigger_conditions": [],
+  "min_tier": "free",
+  "cooldown": "72h",
+  "render": {
+    "ios": {
+      "title": "Talk instead of type",
+      "body": "Tap the microphone icon to dictate your message — handy when you're away from the keyboard or on the move."
+    }
+  },
+  "deep_link": "",
+  "catalog_version": "1"
+}

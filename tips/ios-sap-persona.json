@@ -1,0 +1,18 @@
+{
+  "id": "ios-sap-persona",
+  "family": "ios-persona",
+  "surfaces": ["ios"],
+  "domain_scope": ["config", "model-selection"],
+  "persona_gate": "",
+  "trigger_conditions": [],
+  "min_tier": "free",
+  "cooldown": "72h",
+  "render": {
+    "ios": {
+      "title": "Get SAP-specific answers",
+      "body": "Turn on Persona in the composer and pick your specialty (ABAP, BASIS, FI, and more) so answers use the right terminology and depth for your role."
+    }
+  },
+  "deep_link": "",
+  "catalog_version": "1"
+}

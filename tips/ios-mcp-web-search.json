@@ -1,0 +1,18 @@
+{
+  "id": "ios-mcp-web-search",
+  "family": "ios-assistants",
+  "surfaces": ["ios"],
+  "domain_scope": ["mcp"],
+  "persona_gate": "",
+  "trigger_conditions": [],
+  "min_tier": "free",
+  "cooldown": "72h",
+  "render": {
+    "ios": {
+      "title": "Search the web from chat",
+      "body": "Tap the mode picker above the message field and turn on Web Search under Assistants when you need current info the model doesn't already know."
+    }
+  },
+  "deep_link": "",
+  "catalog_version": "1"
+}
