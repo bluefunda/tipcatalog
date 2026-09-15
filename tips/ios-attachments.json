@@ -10,7 +10,7 @@
   "render": {
     "ios": {
       "title": "Attach files and photos",
-      "body": "Tap the + next to the message field to attach a photo, document, or camera capture — CAI can read and answer questions about it."
+      "body": "Tap the + next to the message field to attach a photo, document, or camera capture, then ask questions about it."
     }
   },
   "deep_link": "",
