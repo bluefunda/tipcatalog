@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/bluefunda/tipcatalog/compare/v1.2.0...v1.2.1) (2026-09-15)
+
+
+### Bug Fixes
+
+* remove internal codename "CAI" from user-facing iOS tip copy ([#9](https://github.com/bluefunda/tipcatalog/issues/9)) ([6938056](https://github.com/bluefunda/tipcatalog/commit/69380569e2cf0e9ca5dbd4b8eae77af7909a0bbd)), closes [#8](https://github.com/bluefunda/tipcatalog/issues/8)
+
 ## [1.2.0](https://github.com/bluefunda/tipcatalog/compare/v1.1.0...v1.2.0) (2026-09-10)
 
 
